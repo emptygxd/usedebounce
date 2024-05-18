@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+
 import { useDebounce } from './shared/hooks/useDebounce';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
   return (
     <div>
       <h1>UseDebounce</h1>
-      <input type="text" value={inputValue} onChange={onChangeInput} />
+      <input value={inputValue} onChange={onChangeInput} />
 
       <p className="searchResult">{searchTerm}</p>
     </div>
