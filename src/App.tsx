@@ -1,24 +1,22 @@
-import { useState } from "react";
-import { useDebounce } from "./shared/hooks/useDebounce";
+import { ChangeEvent, useState } from 'react';
+import { useDebounce } from './shared/hooks/useDebounce';
 
 function App() {
-  const [input, setInput] = useState<string>("");
-  const searchTerm = useDebounce(input, 300);
+  const [inputValue, setInputValue] = useState<string>('');
+  const searchTerm = useDebounce(inputValue, 300);
+
+  const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <div>
       <h1>UseDebounce</h1>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
+      <input type="text" value={inputValue} onChange={onChangeInput} />
 
-      <p>{searchTerm}</p>
+      <p className="searchResult">{searchTerm}</p>
     </div>
   );
 }
 
-export default App
+export default App;
